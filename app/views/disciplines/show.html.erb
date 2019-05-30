@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @discipline.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @discipline.description %>
+</p>
+
+<% if @discipline.themes.empty? %>
+  <p>Theme net</p>
+<% else %>
+  <p>Discipline have next theme:</p>
+  <ul>
+    <% @discipline.themes.each do |elem| %>
+    <li><%= link_to elem.title, elem %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= link_to 'Edit', edit_discipline_path(@discipline) %> |
+<%= link_to 'Back', disciplines_path %>

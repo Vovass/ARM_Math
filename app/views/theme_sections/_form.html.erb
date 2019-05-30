@@ -1,0 +1,22 @@
+<%= form_with(model: theme_section, local: true) do |form| %>
+  <%= render 'common/errors', resource: @theme_section %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :info %>
+    <%= form.text_area :info %>
+  </div>
+
+  <div class="field">
+    <%= form.label :theme, "Theme" %>
+    <%= form.collection_select :theme_id, Theme.where(discipline_id: theme_section.theme.discipline_id), :id, :title %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

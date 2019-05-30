@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Formuls</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @formuls.each do |formul| %>
+      <tr>
+        <td><%= formul.title %></td>
+        <td><%= formul.description %></td>
+        <td><%= link_to 'Show', formul %></td>
+        <td><%= link_to 'Edit', edit_formul_path(formul) %></td>
+        <td><%= link_to 'Destroy', formul, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Formul', new_formul_path %>

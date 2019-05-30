@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @formul.title %>
+</p>
+
+<% if @formul.theme_sections.empty? %>
+  <p>Theme net</p>
+<% else %>
+  <p>Formul use in next theme:</p>
+  <ul>
+    <% @formul.theme_sections.each do |elem| %>
+      <li><%= link_to elem.title, elem %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<p>
+  <strong>Description:</strong>
+  <%= @formul.description %>
+</p>
+
+<%= link_to 'Edit', edit_formul_path(@formul) %> |
+<%= link_to 'Back', formuls_path %>

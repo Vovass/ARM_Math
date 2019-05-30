@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @theme_section.title %>
+</p>
+
+<p>
+  <b>current Theme! :</b>
+  <%= @theme_section.theme.title %>
+</p>
+
+<% if @theme_section.formuls.empty? %>
+  <p>Formul net</p>
+<% else %>
+  <p>We have next formuls:</p>
+  <ul>
+    <% @theme_section.formuls.each do |elem| %>
+      <li><%= elem.title %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<p>
+  <strong>Info:</strong>
+  <%= @theme_section.info %>
+</p>
+
+<%= link_to 'Edit', edit_theme_section_path(@theme_section) %> |
+<%= link_to 'Back', theme_sections_path %>
