@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :theme, "Theme" %>
-    <%= form.collection_select :theme_id, Theme.where(discipline_id: Theme.find(params[:id_d]).discipline_id), :id, :title, {:selected => params[:id_d]} %>
+    <%= form.collection_select :theme_id, Theme.where(discipline_id: @theme_section.theme.discipline.id), :id, :title, {:selected => @theme_section.theme.id} %>
   </div>
 
   <div class="actions">

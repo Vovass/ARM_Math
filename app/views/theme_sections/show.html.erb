@@ -16,11 +16,13 @@
   <p>We have next formuls:</p>
   <ul>
     <% @theme_section.formuls.each do |elem| %>
-      <li><%= elem.title %></li>
+      <li><%=link_to elem.title, elem %></li>
     <% end %>
   </ul>
 <% end %>
 
+<%= link_to 'Add formul', new_formul_path(:id => @theme_section)%><br>
+<%= link_to 'Create formul', new_formul_path(:id => @theme_section)%><br>
 <p>
   <strong>Info:</strong>
   <%= @theme_section.info %>

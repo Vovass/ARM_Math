@@ -1,0 +1,22 @@
+<%= form_with(model: formul, local: true) do |form| %>
+  <%= render 'common/errors', resource: @formul %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :disipline, "Промежуточная тема, потом это убрать и вставлять конкретную, это для теста! там НЕТ НИКИХ ФОРМУЛ СЕЛЕКТ НЕ ВЕРНЫЙ НЕ СМОТРИ!" %>
+    <%= form.collection_select :discipline_id, Formul.all, :id, :title, {:selected => 1} %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "#{@formul.new_record? ? 'Cjzdat' : 'Izmenit'}"%>
+  </div>
+<% end %>
