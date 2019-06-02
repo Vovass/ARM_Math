@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_29_180027) do
+ActiveRecord::Schema.define(version: 2019_06_02_092051) do
 
   create_table "disciplines", force: :cascade do |t|
     t.string "title"
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 2019_05_29_180027) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "theme_section_formuls", force: :cascade do |t|
+    t.integer "theme_section_id"
+    t.integer "formul_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["formul_id"], name: "index_theme_section_formuls_on_formul_id"
+    t.index ["theme_section_id"], name: "index_theme_section_formuls_on_theme_section_id"
+  end
+
   create_table "theme_sections", force: :cascade do |t|
     t.string "title"
     t.text "info"
@@ -33,11 +42,6 @@ ActiveRecord::Schema.define(version: 2019_05_29_180027) do
     t.datetime "updated_at", null: false
     t.integer "theme_id"
     t.index ["theme_id"], name: "index_theme_sections_on_theme_id"
-  end
-
-  create_table "theme_sections_formuls", force: :cascade do |t|
-    t.integer "theme_section_id"
-    t.integer "formul_id"
   end
 
   create_table "themes", force: :cascade do |t|

@@ -69,6 +69,6 @@ class FormulsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def formul_params
-      params.require(:formul).permit(:title, :description)
+      params.require(:formul).permit(:title, :description, theme_section_ids: [])
     end
 end
