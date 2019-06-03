@@ -6,10 +6,8 @@
     <%= form.text_field :title %>
   </div>
 
-  <div class="field">
-    <%= form.hidden_field(:theme_section_ids, :value => ThemeSection.find(params[:id]).id) %>
-  </div>
-
+  <p>Выбирите секции к которым относиться данная формула используя CTRL или оставьте по умолчанию</p>
+  <%= form.collection_select :theme_section_ids, ThemeSection.where(theme_id: ThemeSection.find(params[:id]).theme_id), :id, :title, {:selected => params[:id]}, {multiple: true, class: "form-control"} %>
   <div class="field">
     <%= form.label :description %>
     <%= form.text_area :description %>

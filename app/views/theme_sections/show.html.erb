@@ -20,12 +20,10 @@
     <% end %>
   </ul>
 <% end %>
-
-<%= link_to 'Add formul', new_formul_path(:id => @theme_section)%><br>
-<%= link_to 'Create formul', new_formul_path(:id => @theme_section)%><br>
+<%= link_to 'Create & add new formul', new_formul_path(:id => @theme_section)%><br>
 <p>
   <strong>Info:</strong>
-  <%= @theme_section.info %>
+  <%= @theme_section.info.empty? ? 'Пусто' : @theme_section.info %>
 </p>
 
 <%= link_to 'Edit', edit_theme_section_path(@theme_section) %> |

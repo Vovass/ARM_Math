@@ -16,7 +16,11 @@
   <p>Theme have next theme_sections:</p>
   <ul>
     <% @theme.theme_sections.each do |elem| %>
-    <li><%= link_to elem.title, elem %></li>
+    <li>
+      <%= link_to elem.title, elem %> -
+      <%= link_to 'Edit', edit_theme_section_path(elem) %> |
+      <%= link_to 'Destroy', elem, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
     <% end %>
   </ul>
 <% end %>

@@ -56,7 +56,7 @@ class ThemesController < ApplicationController
   def destroy
     @theme.destroy
     respond_to do |format|
-      format.html { redirect_to themes_url, notice: 'Theme was successfully destroyed.' }
+      format.html { redirect_to request.env['HTTP_REFERER'], notice: 'Theme was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

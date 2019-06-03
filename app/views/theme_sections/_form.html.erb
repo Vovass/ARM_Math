@@ -16,6 +16,11 @@
     <%= form.collection_select :theme_id, Theme.where(discipline_id: Theme.find(params[:id_d]).discipline_id), :id, :title, {:selected => params[:id_d]} %>
   </div>
 
+  <div class="field">
+    <p>formuls:</p>
+    <%= form.collection_select :formul_ids, Formul.all, :id, :title, {},  {multiple: true, class: "form-control"} %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

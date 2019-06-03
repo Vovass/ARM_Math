@@ -1,5 +1,5 @@
 class ThemeSectionsController < ApplicationController
-  before_action :set_theme_section, only: [:show, :edit, :update, :destroy]
+  before_action :set_theme_section, only: [:chosen, :show, :edit, :update, :destroy]
 
   # GET /theme_sections
   # GET /theme_sections.json
@@ -16,6 +16,7 @@ class ThemeSectionsController < ApplicationController
   def new
     @theme_section = ThemeSection.new
   end
+
 
   # GET /theme_sections/1/edit
   def edit
@@ -56,7 +57,7 @@ class ThemeSectionsController < ApplicationController
   def destroy
     @theme_section.destroy
     respond_to do |format|
-      format.html { redirect_to theme_sections_url, notice: 'Theme section was successfully destroyed.' }
+      format.html { redirect_to request.env['HTTP_REFERER'], notice: 'Theme section was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +70,6 @@ class ThemeSectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def theme_section_params
-      params.require(:theme_section).permit(:title, :info, :theme_id)
+      params.require(:theme_section).permit(:title, :info, :theme_id, formul_ids: [])
     end
 end
