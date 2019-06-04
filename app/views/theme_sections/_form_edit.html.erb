@@ -8,7 +8,8 @@
 
   <div class="field">
     <%= form.label :info %>
-    <%= form.text_area :info %>
+    <%= form.text_area :info, id: :theme_section_info, class: "form-control"%>
+    <trix-editor input="theme_section_info"></trix-editor>
   </div>
 
   <div class="field">

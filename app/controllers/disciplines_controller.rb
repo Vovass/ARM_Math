@@ -42,7 +42,7 @@ class DisciplinesController < ApplicationController
   def update
     respond_to do |format|
       if @discipline.update(discipline_params)
-        format.html { redirect_to @discipline, notice: 'Discipline was successfully updated.' }
+        format.html { redirect_to :root, notice: 'Discipline was successfully updated.' }
         format.json { render :show, status: :ok, location: @discipline }
       else
         format.html { render :edit }

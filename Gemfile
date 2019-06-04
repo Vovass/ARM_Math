@@ -18,8 +18,8 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'pry'
 gem 'pry-rails'
-
-
+gem 'trix'
+gem 'shrine'
 
 
 # Use CoffeeScript for .coffee assets and views

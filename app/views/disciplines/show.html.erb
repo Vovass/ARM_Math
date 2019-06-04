@@ -20,6 +20,7 @@
       <%= link_to elem.title, elem %> -
       <%= link_to 'Edit', edit_theme_path(elem) %> |
       <%= link_to 'Destroy', elem, method: :delete, data: { confirm: 'Are you sure?' } %>
+      last update: <%= elem.updated_at %>!
     </li>
     <% end %>
   </ul>
