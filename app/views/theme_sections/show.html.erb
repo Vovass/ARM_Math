@@ -21,6 +21,21 @@
   </ul>
 <% end %>
 <%= link_to 'Create & add new formul', new_formul_path(:id => @theme_section)%><br>
+
+<% if @theme_section.theorems.empty? %>
+  <p>Theorem net</p>
+<% else %>
+  <p>We have next Theorem:</p>
+  <ul>
+    <% @theme_section.theorems.each do |elem| %>
+      <li><%=link_to elem.title, elem %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= link_to 'Create & add new theorem', new_theorem_path(:id => @theme_section)%><br>
+
+
 <p>
   <strong>Info: Сделать наверное формулы с богу списокм тип прикрепленные ) </strong>
   <%= sanitize @theme_section.info.empty? ? 'Пусто' : @theme_section.info %>

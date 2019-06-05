@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  theme_section: one
+  theorem: one
+
+two:
+  theme_section: two
+  theorem: two

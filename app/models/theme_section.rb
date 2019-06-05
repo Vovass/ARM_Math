@@ -5,4 +5,6 @@ class ThemeSection < ApplicationRecord
   has_many :theme_section_formuls, dependent: :destroy
   has_many :formuls, through: :theme_section_formuls
 
+  has_many :theme_section_theorems, dependent: :destroy
+  has_many :theorems, through: :theme_section_theorems
 end

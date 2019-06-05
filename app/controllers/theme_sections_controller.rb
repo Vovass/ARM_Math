@@ -70,6 +70,6 @@ class ThemeSectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def theme_section_params
-      params.require(:theme_section).permit(:title, :info, :theme_id, formul_ids: [])
+      params.require(:theme_section).permit(:title, :info, :theme_id, formul_ids: [], theorem_ids: [])
     end
 end

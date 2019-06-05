@@ -22,6 +22,11 @@
     <%= form.collection_select :formul_ids, Formul.all, :id, :title, {},  {multiple: true, class: "form-control"} %>
   </div>
 
+  <div class="field">
+    <p>theorms:</p>
+    <%= form.collection_select :theorem_ids, Theorem.all, :id, :title, {},  {multiple: true, class: "form-control"} %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

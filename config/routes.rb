@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :theorems
+  resources :tasks
+  resources :scientists
   resources :photos
   resources :formuls
   resources :theme_sections

@@ -1,0 +1,18 @@
+<%= form_with(model: theorem, local: true) do |form| %>
+  <%= render 'common/errors', resource: @theorem%>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :theorem_description, class: "form-control"%>
+    <trix-editor input="theorem_description"></trix-editor>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

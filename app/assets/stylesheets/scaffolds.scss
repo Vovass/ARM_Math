@@ -3,6 +3,10 @@
 //   font-size: 13px;
 //   line-height: 18px;
 // }
+.padding_0 {
+  padding-left: 0;
+  padding-right: 0;
+}
 .bg_gray {
   background-color: #333333;
 }
@@ -61,9 +65,18 @@ div {
 }
 
 #notice {
-  color: green;
+  color: #009900;
+
+  font-size: 20px;
+
 }
 
+.notice_js {
+  padding: 15px 15px;
+  border: 1px solid #009900;
+  background-color: rgba(0,159,0, .3);
+  border-radius: 5px;
+}
 .field_with_errors {
   padding: 2px;
   background-color: red;

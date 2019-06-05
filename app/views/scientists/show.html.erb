@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @scientist.title %>
+  <%= @scientist.info %>
+</p>
+
+<%= link_to 'Edit', edit_scientist_path(@scientist) %> |
+<%= link_to 'Back', scientists_path %>

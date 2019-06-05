@@ -3,4 +3,5 @@ class Theme < ApplicationRecord
 
   belongs_to :discipline
   has_many :theme_sections, dependent: :destroy
+  has_many :tasks, dependent: :destroy
 end

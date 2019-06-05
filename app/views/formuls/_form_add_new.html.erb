@@ -10,10 +10,11 @@
   <%= form.collection_select :theme_section_ids, ThemeSection.where(theme_id: ThemeSection.find(params[:id]).theme_id), :id, :title, {:selected => params[:id]}, {multiple: true, class: "form-control"} %>
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, id: :formul_description, class: "form-control"%>
+    <trix-editor input="formul_description"></trix-editor>
   </div>
 
   <div class="actions">
-    <%= form.submit "#{@formul.new_record? ? 'Cjzdat' : 'Izmenit'}"%>
+    <%= form.submit "#{@formul.new_record? ? 'Создать' : 'Изменить'}"%>
   </div>
 <% end %>

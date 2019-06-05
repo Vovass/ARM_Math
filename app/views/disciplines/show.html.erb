@@ -1,31 +1,53 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @discipline.title %>
-</p>
+<h1 class="center">Дисциплина: <%= @discipline.title %></h1>
 
-<p>
-  <strong>Description:</strong>
-  <%= @discipline.description %>
-</p>
+<div class="container">
+  <div class="row">
 
-<% if @discipline.themes.empty? %>
-  <p>Theme net</p>
-<% else %>
-  <p>Discipline have next theme:</p>
-  <ul>
-    <% @discipline.themes.each do |elem| %>
-    <li>
-      <%= link_to elem.title, elem %> -
-      <%= link_to 'Edit', edit_theme_path(elem) %> |
-      <%= link_to 'Destroy', elem, method: :delete, data: { confirm: 'Are you sure?' } %>
-      last update: <%= elem.updated_at %>!
-    </li>
-    <% end %>
-  </ul>
-<% end %>
-<%= link_to 'Add', new_theme_path(:id_d => @discipline)%><br>
+      <div class="col-12 bg-light description">
+        Описание:<br>
+        <p><%= @discipline.description %></p>
+      </div>
+
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+      <div class="col-12 center margin_top_20 margin_bottom_20">
+        <% if @discipline.themes.empty? %>
+          <p>Theme net</p>
+        <% else %>
+          <h3>Данная дисциплина имеет следующие темы:</h3>
+
+      </div>
+        <% @discipline.themes.each do |elem| %>
+          <div class="container">
+            <div class="row">
+              <div class="col col-sm-8">
+                <div class="list">
+                  <%= link_to elem.title, elem, class: "big_links c_normal" %>
+                </div>
+              </div>
+              <div class="col col-sm-2 ">
+                  <%= link_to 'Edit', edit_theme_path(elem), class: "big_links c_edit" %>
+              </div>
+              <div class="col col-sm-2 ">
+                <%= link_to 'Destroy', elem, method: :delete, data: { confirm: 'Are you sure?' }, class: "big_links c_destroy" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <% end %>
+  </div>
+</div>
+
+<div class="col-md-2 margin_top_20 ">
+  <%= link_to 'Add New Theme', new_theme_path(:id_d => @discipline), class: "big_links c_new" %>
+</div>
+<br>
 <h3>
   <%= link_to 'Edit', edit_discipline_path(@discipline) %> |
   <%= link_to 'Back', disciplines_path %>

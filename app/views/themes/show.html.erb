@@ -24,8 +24,19 @@
     <% end %>
   </ul>
 <% end %>
-<%= link_to 'Add', new_theme_section_path(:id_d => @theme)%><br>
-
-
-<%= link_to 'Edit', edit_theme_path(@theme) %> |
+<%= link_to 'Добавить новую секцию', new_theme_section_path(:id_d => @theme)%>
+<br>
+<br>
+<p>Задачи по данной теме:</p>
+  <ul>
+    <% @theme.tasks.each do |elem| %>
+    <li>
+      <%= link_to elem.title, elem %> -
+      <%= link_to 'Edit', edit_task_path(elem) %> |
+      <%= link_to 'Destroy', elem, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+    <% end %>
+  </ul>
+<%= link_to 'Добавить новую заачу', new_task_path(:id_d => @theme)%>
+<br>
 <%= link_to 'Back', themes_path %>

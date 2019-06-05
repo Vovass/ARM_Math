@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @theorem.title %>
+</p>
+
+<% if @theorem.theme_sections.empty? %>
+  <p>Theme net</p>
+<% else %>
+  <p>Formul use in next theme:</p>
+  <ul>
+    <% @theorem.theme_sections.each do |elem| %>
+      <li><%= link_to elem.title, elem %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<p>
+  <strong>Description:</strong>
+  <%=sanitize @theorem.description %>
+</p>
+
+<%= link_to 'Edit', edit_theorem_path(@theorem) %> |
+<%= link_to 'Back', theorems_path %>

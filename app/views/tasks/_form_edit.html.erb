@@ -1,0 +1,22 @@
+<%= form_with(model: task, local: true) do |form| %>
+  <%= render 'common/errors', resource: @task %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :theme, "Theme" %>
+    <%= form.collection_select :theme_id, Theme.where(discipline_id: @task.theme.discipline.id), :id, :title, {:selected => @task.theme.id} %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

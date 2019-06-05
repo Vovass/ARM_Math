@@ -8,7 +8,8 @@
 
   <div class="field">
     <%= form.label :info %>
-    <%= form.text_area :info %>
+    <%= form.text_area :info, id: :theme_section_info, class: "form-control"%>
+    <trix-editor input="theme_section_info"></trix-editor>
   </div>
 
   <div class="field">
@@ -19,6 +20,11 @@
   <div class="field">
     <p>formuls:</p>
     <%= form.collection_select :formul_ids, Formul.all, :id, :title, {},  {multiple: true, class: "form-control"} %>
+  </div>
+
+  <div class="field">
+    <p>theorms:</p>
+    <%= form.collection_select :theorem_ids, Theorem.all, :id, :title, {},  {multiple: true, class: "form-control"} %>
   </div>
 
   <div class="actions">
