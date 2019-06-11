@@ -1,4 +1,5 @@
 class TheoremsController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :create]
   before_action :set_theorem, only: [:show, :edit, :update, :destroy]
 
   # GET /theorems

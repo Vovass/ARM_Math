@@ -1,18 +1,17 @@
 <%= form_with(model: formul, local: true) do |form| %>
   <%= render 'common/errors', resource: @formul %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+
+    <h4>Наименование формулы:</h4>
+    <%= form.text_field(:title, {:class => 'form-control', required: true}) %>
+
 
   <div class="field">
-    <%= form.label :description %>
+    <h4>Описание:</h4>
     <%= form.text_area :description, id: :formul_description, class: "form-control"%>
     <trix-editor input="formul_description"></trix-editor>
   </div>
 
-  <div class="actions">
-    <%= form.submit "#{@formul.new_record? ? 'Cjzdat' : 'Izmenit'}"%>
-  </div>
+  <%= form.submit({:class => 'btn btn-success'}) %>
+
 <% end %>

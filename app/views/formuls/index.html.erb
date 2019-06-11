@@ -1,25 +1,24 @@
-<p id="notice"><%= notice %></p>
+<h1 class="center">Формулы</h1>
 
-<h1>Formuls</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="container">
+  <div class="row">
     <% @formuls.each do |formul| %>
-      <tr>
-        <td><%= formul.title %></td>
-        <td><%= link_to 'Show', formul %></td>
-        <td><%= link_to 'Edit', edit_formul_path(formul) %></td>
-        <td><%= link_to 'Destroy', formul, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% if user_signed_in? %>
+        <div class="col col-sm-8">
+          <%= link_to formul.title, formul, class: "big_links c_normal" %>
+        </div>
+        <div class="col col-sm-2">
+          <%= link_to 'Изменить', edit_formul_path(formul), class: "big_links c_edit" %>
+        </div>
+        <div class="col col-sm-2">
+          <%= link_to 'Удалить', formul, method: :delete, data: { confirm: 'Вы уверены?' }, class: "big_links c_destroy" %>
+        </div>
+      <%else %>
+        <div class="col col-sm-12">
+          <%= link_to formul.title, formul, class: "big_links c_normal" %>
+        </div>
+      <%end %>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
-<br>

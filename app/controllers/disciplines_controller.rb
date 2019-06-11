@@ -1,4 +1,5 @@
 class DisciplinesController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :create]
   before_action :set_discipline, only: [:show, :edit, :update, :destroy]
 
   # GET /disciplines
@@ -24,11 +25,12 @@ class DisciplinesController < ApplicationController
   # POST /disciplines
   # POST /disciplines.json
   def create
+    byebug
     @discipline = Discipline.new(discipline_params)
 
     respond_to do |format|
       if @discipline.save
-        format.html { redirect_to @discipline, notice: 'Discipline was successfully created.' }
+        format.html { redirect_to @discipline, notice: 'Дисциплина успешно созданы.' }
         format.json { render :show, status: :created, location: @discipline }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class DisciplinesController < ApplicationController
   def update
     respond_to do |format|
       if @discipline.update(discipline_params)
-        format.html { redirect_to @discipline, notice: 'Discipline was successfully updated.' }
+        format.html { redirect_to @discipline, notice: 'Дисциплина успешно обновлены.' }
         format.json { render :show, status: :ok, location: @discipline }
       else
         format.html { render :edit }
@@ -56,7 +58,7 @@ class DisciplinesController < ApplicationController
   def destroy
     @discipline.destroy
     respond_to do |format|
-      format.html { redirect_to disciplines_url, notice: 'Discipline was successfully destroyed.' }
+      format.html { redirect_to disciplines_url, notice: 'Дисциплина успешно удалена.' }
       format.json { head :no_content }
     end
   end

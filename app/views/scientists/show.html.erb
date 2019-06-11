@@ -1,10 +1,5 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Title:</strong>
-  <%= @scientist.title %>
-  <%= @scientist.info %>
+  <h3 class="center margin_bottom_20"><%= @scientist.title %></h3>
+  <h5>Описание :</h5>
+  <%= sanitize @scientist.info %>
 </p>
-
-<%= link_to 'Edit', edit_scientist_path(@scientist) %> |
-<%= link_to 'Back', scientists_path %>

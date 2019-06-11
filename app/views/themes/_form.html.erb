@@ -1,18 +1,18 @@
 <%= form_with(model: theme, local: true) do |form| %>
   <%= render 'common/errors', resource: @theme %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
 
   <div class="field">
-    <%= form.label :disipline, "Discipline" %>
-    <%= form.collection_select :discipline_id, Discipline.all, :id, :title, {:selected => params[:id_d]} %>
+    <h4>Наименование темы:</h4>
+    <%= form.text_field(:title, {:class => 'form-control'}) %>
+  </div>
+  <div class="field">
+    <h4>Дисциплина:</h4>
+    <%= form.collection_select :discipline_id, Discipline.all, :id, :title, {:selected => params[:id_d]}, {class: "form-control"}%>
   </div>
 
+  <%= form.submit({:class => 'btn btn-success'}) %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+
+
 <% end %>

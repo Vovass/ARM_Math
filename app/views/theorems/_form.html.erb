@@ -1,18 +1,14 @@
 <%= form_with(model: theorem, local: true) do |form| %>
   <%= render 'common/errors', resource: @theorem%>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+  <h4>Наименование дисциплины:</h4>
+  <%= form.text_field(:title, {:class => 'form-control',required: true}) %>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :theorem_description, class: "form-control"%>
+    <h4>Описание(используйте нижнее поле для редактирования):</h4>
+    <%= form.text_area :description, id: :theorem_description, class: "form-control",required: true%>
     <trix-editor input="theorem_description"></trix-editor>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.submit({:class => 'btn btn-success'}) %>
 <% end %>

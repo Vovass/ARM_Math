@@ -1,4 +1,5 @@
 class ThemeSectionsController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :create]
   before_action :set_theme_section, only: [:chosen, :show, :edit, :update, :destroy]
 
   # GET /theme_sections

@@ -1,19 +1,15 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
+<h1 class="center">
   <%= @task.title %>
-</p>
+</h1>
 
-<p>
-  <b>current Theme! :</b>
-  <%= @task.theme.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @task.description %>
-</p>
-
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+  <p>
+    <%= link_to "Тема: #{@task.theme.title}", @task.theme %>
+  </p>
+  <h6>Описание: <%=sanitize @task.description %></h6>
+<br>
+<% if user_signed_in? %>
+  <div class="mw_200">
+    <%= link_to 'Изменить', edit_task_path(@task), class: "big_links c_edit" %>
+  </div>
+<% end %>

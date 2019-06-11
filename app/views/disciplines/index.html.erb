@@ -1,10 +1,10 @@
-<p id="notice"><%= notice %></p>
-
-<h1 class="center">Disciplines</h1>
+<h1 class="center">Дисциплины</h1>
 
 <div class="container">
   <div class="row">
-    <% @disciplines.each do |discipline| %>
+    <% if user_signed_in? %>
+
+      <% @disciplines.each do |discipline| %>
 
         <div class="col col-sm-8">
           <%= link_to discipline.title, discipline, class: "big_links c_normal" %>
@@ -15,9 +15,20 @@
         <div class="col col-sm-2">
           <%= link_to 'Destroy', discipline, method: :delete, data: { confirm: 'Are you sure?' }, class: "big_links c_destroy" %>
         </div>
+      <% end %>
+
+    <% else %>
+      <% @disciplines.each do |discipline| %>
+
+        <div class="col col-sm-12">
+          <%= link_to discipline.title, discipline, class: "big_links c_normal" %>
+        </div>
+      <% end %>
     <% end %>
+    <% if user_signed_in? %>
     <div class="col-md-3 margin_top_20">
-      <%= link_to 'New Discipline', new_discipline_path, class: "big_links c_new" %>
+      <%= link_to 'Новая дисциплина', new_discipline_path, class: "big_links c_new" %>
     </div>
+      <% end %>
   </div>
 </div>

@@ -1,12 +1,12 @@
 <%= form_with(model: discipline, local: true) do |form| %>
   <%= render 'common/errors', resource: @discipline %>
 
-  <h4>Наименование дисциплины:<h4>
+  <h4>Наименование дисциплины:</h4>
     <%= form.text_field(:title, {:class => 'form-control'}) %>
 
-  <h4>Описание:<h4>
+  <h4>Описание:</h4>
     <%= form.text_area(:description, {:class => 'form-control'}) %>
     <br>
     <%= form.submit({:class => 'btn btn-success'}) %>
-  </h4>
+
 <% end %>

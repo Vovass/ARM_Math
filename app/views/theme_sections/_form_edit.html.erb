@@ -2,32 +2,30 @@
   <%= render 'common/errors', resource: @theme_section %>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <h4>Наименование темы:</h4>
+    <%= form.text_field :title, {:class => 'form-control', required: true} %>
   </div>
 
   <div class="field">
-    <%= form.label :info %>
+    <h4>Информация(используйте нижнее поле для редоктирования):</h4>
     <%= form.text_area :info, id: :theme_section_info, class: "form-control"%>
     <trix-editor input="theme_section_info"></trix-editor>
   </div>
 
   <div class="field">
-    <%= form.label :theme, "Theme" %>
-    <%= form.collection_select :theme_id, Theme.where(discipline_id: @theme_section.theme.discipline.id), :id, :title, {:selected => @theme_section.theme.id} %>
+    <%= form.label :theme, "Тема" %>
+    <%= form.collection_select :theme_id, Theme.where(discipline_id: @theme_section.theme.discipline.id), :id, :title, {:selected => @theme_section.theme.id}, {:class => 'form-control'} %>
   </div>
 
   <div class="field">
-    <p>formuls:</p>
+    <p>Используйте CTRL для выбора формул:</p>
     <%= form.collection_select :formul_ids, Formul.all, :id, :title, {},  {multiple: true, class: "form-control"} %>
   </div>
 
   <div class="field">
-    <p>theorms:</p>
+    <p>Используйте CTRL для выбора теорем:</p>
     <%= form.collection_select :theorem_ids, Theorem.all, :id, :title, {},  {multiple: true, class: "form-control"} %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.submit({:class => 'btn btn-success'}) %>
 <% end %>

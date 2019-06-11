@@ -18,7 +18,7 @@
   padding: 10px 6px;
 }
 .navbar-nav li:hover {
-  margin-left: 10px;
+  margin-right: 100px;
   border: 3px dotted gray;
 }
 p, ol, ul, td {
@@ -35,6 +35,13 @@ pre {
   background-color: #eee;
   padding: 10px;
   font-size: 11px;
+}
+
+.log_in {
+  margin-left: 10px;
+  padding: 10px 6px;
+  position: absolute;
+  right: 0;
 }
 
 // a {
@@ -108,4 +115,11 @@ div {
 
 label {
   display: block;
+}
+textarea.form-control {
+  margin-bottom: 5px;
+  background-color: rgba(255,58,51,.3);
+}
+.notice {
+  text-align: center;
 }

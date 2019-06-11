@@ -1,45 +1,56 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Title:</strong>
-  <%= @theme_section.title %>
+  <b>Текущий путь:</b>
+  <%= link_to @theme_section.theme.discipline.title, @theme_section.theme.discipline %> -> <%= link_to @theme_section.theme.title, @theme_section.theme %>
 </p>
 
+<h1 class="center">Секция: <%= @theme_section.title %></h1>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 center margin_bottom_20">
+      <% if @theme_section.formuls.empty? %>
+        <p>Формул нету</p>
+      <% else %>
+        <h3>Данная секция имеет следующие формулы:</h3>
+    </div>
+        <% @theme_section.formuls.each do |elem| %>
+          <div class="list w100">
+            <%= link_to elem.title, elem, class: "big_links c_normal" %>
+          </div>
+        <% end %>
+      <% end %>
+  </div>
+</div>
+<% if user_signed_in? %>
+  <div class="col-md-4 margin_top_20 ">
+    <%= link_to 'Добавить новую формулу', new_formul_path(:id => @theme_section), class: "big_links c_new" %>
+  </div>
+<%end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 center margin_bottom_20">
+      <% if @theme_section.theorems.empty? %>
+        <p>Теорем нету</p>
+      <% else %>
+        <h3>Данная секция имеет следующие теоремы:</h3>
+        </div>
+        <% @theme_section.theorems.each do |elem| %>
+          <div class="list w100">
+            <%= link_to elem.title, elem, class: "big_links c_normal" %>
+          </div>
+        <% end %>
+      <% end %>
+      </div>
+</div>
+<% if user_signed_in? %>
+  <div class="col-md-4 margin_top_20 ">
+    <%= link_to 'Добавить новую теорему', new_theorem_path(:id => @theme_section), class: "big_links c_new" %>
+  </div>
+<%end %>
+
 <p>
-  <b>current Theme! :</b>
-  <%= @theme_section.theme.title %>
-</p>
-
-<% if @theme_section.formuls.empty? %>
-  <p>Formul net</p>
-<% else %>
-  <p>We have next formuls:</p>
-  <ul>
-    <% @theme_section.formuls.each do |elem| %>
-      <li><%=link_to elem.title, elem %></li>
-    <% end %>
-  </ul>
-<% end %>
-<%= link_to 'Create & add new formul', new_formul_path(:id => @theme_section)%><br>
-
-<% if @theme_section.theorems.empty? %>
-  <p>Theorem net</p>
-<% else %>
-  <p>We have next Theorem:</p>
-  <ul>
-    <% @theme_section.theorems.each do |elem| %>
-      <li><%=link_to elem.title, elem %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-<%= link_to 'Create & add new theorem', new_theorem_path(:id => @theme_section)%><br>
-
-
-<p>
-  <strong>Info: Сделать наверное формулы с богу списокм тип прикрепленные ) </strong>
+  <strong>Описание</strong>
   <%= sanitize @theme_section.info.empty? ? 'Пусто' : @theme_section.info %>
 </p>
-
-<%= link_to 'Edit', edit_theme_section_path(@theme_section) %> |
-<%= link_to 'Back', theme_sections_path %>

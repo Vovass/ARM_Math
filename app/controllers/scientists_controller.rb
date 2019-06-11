@@ -1,4 +1,5 @@
 class ScientistsController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :create]
   before_action :set_scientist, only: [:show, :edit, :update, :destroy]
 
   # GET /scientists

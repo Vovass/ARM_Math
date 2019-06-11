@@ -1,4 +1,5 @@
 class FormulsController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :create]
   before_action :set_formul, only: [:show, :edit, :update, :destroy]
 
   # GET /formuls

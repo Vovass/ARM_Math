@@ -1,20 +1,18 @@
 <%= form_with(model: formul, local: true) do |form| %>
   <%= render 'common/errors', resource: @formul %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+  <h4>Наименование формулы:</h4>
+  <%= form.text_field(:title, {:class => 'form-control', required: true}) %>
+
 
   <p>Выбирите секции к которым относиться данная формула используя CTRL или оставьте по умолчанию</p>
   <%= form.collection_select :theme_section_ids, ThemeSection.where(theme_id: ThemeSection.find(params[:id]).theme_id), :id, :title, {:selected => params[:id]}, {multiple: true, class: "form-control"} %>
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :formul_description, class: "form-control"%>
+    <h4>Описание</h4>
+    <%= form.text_area :description, id: :formul_description, class: "form-control",required: true%>
     <trix-editor input="formul_description"></trix-editor>
   </div>
 
-  <div class="actions">
-    <%= form.submit "#{@formul.new_record? ? 'Создать' : 'Изменить'}"%>
-  </div>
+    <%= form.submit({:class => 'btn btn-success'}) %>
+
 <% end %>

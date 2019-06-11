@@ -1,27 +1,38 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
+<h1 class="center">
   <%= @formul.title %>
-</p>
+</h1>
 
 <% if @formul.theme_sections.empty? %>
-  <p>Theme net</p>
+  <p>Формулу не используют</p>
 <% else %>
-  <p>Formul use in next theme:</p>
-  <ul>
-    <% @formul.theme_sections.each do |elem| %>
-      <li><%= link_to elem.title, elem %></li>
-    <% end %>
-  </ul>
+  <h3>Формулу используют:</h3>
+  <div class="container">
+    <div class="row">
+      <div class="col col-sm-8">
+        Тема:
+      </div>
+      <div class="col col-sm-4">
+        Дисциплина темы:
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <% @formul.theme_sections.each do |elem| %>
+        <div class="col col-sm-8">
+          <%= link_to elem.title, elem, class: "big_links c_normal" %>
+        </div>
+        <div class="col col-sm-4">
+          <%= link_to elem.theme.title, elem.theme, class: "big_links c_normal" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
 <% end %>
 
+
 <p>
-  <strong>Description:</strong>
-  <%=sanitize @formul.description %>
+<h4>Описание:</h4>
+<%=sanitize @formul.description %>
 </p>
-
-<%= link_to 'DESTROY', @formul, method: :delete, data: { confirm: 'Are you sure?' } %>
-
-<%= link_to 'Edit', edit_formul_path(@formul) %> |
-<%= link_to 'Back', :back %>

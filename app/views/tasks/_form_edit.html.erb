@@ -1,22 +1,19 @@
 <%= form_with(model: task, local: true) do |form| %>
   <%= render 'common/errors', resource: @task %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+  <h4>Название:</h4>
+  <%= form.text_field(:title, {:class => 'form-control'}) %>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+
+  <h4>Описание</h4>
+  <%= form.text_area :description, id: :formul_description, class: "form-control"%>
+  <trix-editor input="formul_description"></trix-editor>
+
 
   <div class="field">
     <%= form.label :theme, "Theme" %>
-    <%= form.collection_select :theme_id, Theme.where(discipline_id: @task.theme.discipline.id), :id, :title, {:selected => @task.theme.id} %>
+    <%= form.collection_select :theme_id, Theme.where(discipline_id: @task.theme.discipline.id), :id, :title, {:selected => @task.theme.id}, class: "form-control" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.submit({:class => 'btn btn-success'}) %>
 <% end %>

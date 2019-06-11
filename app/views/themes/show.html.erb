@@ -1,42 +1,96 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Theme:</strong>
-  <%= @theme.title %>
+  <b>Текущая дисциплина:</b>
+  <%= link_to @theme.discipline.title, @theme.discipline %>
 </p>
+<h1 class="center">Тема: <%= @theme.title %></h1>
 
-<p>
-  <b>Current Discipline! :</b>
-  <%= @theme.discipline.title %>
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12 center margin_bottom_20">
+      <% if @theme.theme_sections.empty? %>
+        <p>Тем нету</p>
+      <% else %>
+        <h3>Данная тема имеет следующие секции:</h3>
+    </div>
 
-<% if @theme.theme_sections.empty? %>
-  <p>Theme net</p>
-<% else %>
-  <p>Theme have next theme_sections:</p>
-  <ul>
-    <% @theme.theme_sections.each do |elem| %>
-    <li>
-      <%= link_to elem.title, elem %> -
-      <%= link_to 'Edit', edit_theme_section_path(elem) %> |
-      <%= link_to 'Destroy', elem, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </li>
-    <% end %>
-  </ul>
-<% end %>
-<%= link_to 'Добавить новую секцию', new_theme_section_path(:id_d => @theme)%>
+        <% @theme.theme_sections.each do |elem| %>
+          <div class="container">
+            <div class="row">
+              <% if user_signed_in? %>
+                <div class="col col-sm-8">
+                  <div class="list">
+                    <%= link_to elem.title, elem, class: "big_links c_normal" %>
+                  </div>
+                </div>
+                <div class="col col-sm-2 ">
+                  <%= link_to 'Изменить', edit_theme_section_path(elem) , class: "big_links c_edit" %>
+                </div>
+                <div class="col col-sm-2 ">
+                  <%= link_to 'Удалить', elem, method: :delete, data: { confirm: 'Вы уверены?' }, class: "big_links c_destroy" %>
+                </div>
+              <%else %>
+                <div class="col col-sm-12">
+                  <div class="list">
+                    <%= link_to elem.title, elem, class: "big_links c_normal" %>
+                  </div>
+                </div>
+              <%end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      </div>
+</div>
+
+<% if user_signed_in? %>
+  <div class="col-md-2 margin_top_20 ">
+    <%= link_to 'Добавить новую секцию', new_theme_section_path(:id_d => @theme), class: "big_links c_new" %>
+  </div>
+<%end %>
 <br>
 <br>
-<p>Задачи по данной теме:</p>
-  <ul>
-    <% @theme.tasks.each do |elem| %>
-    <li>
-      <%= link_to elem.title, elem %> -
-      <%= link_to 'Edit', edit_task_path(elem) %> |
-      <%= link_to 'Destroy', elem, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </li>
-    <% end %>
-  </ul>
-<%= link_to 'Добавить новую заачу', new_task_path(:id_d => @theme)%>
-<br>
-<%= link_to 'Back', themes_path %>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 center margin_bottom_20">
+      <% if @theme.tasks.empty? %>
+        <h3>Задач нет</h3>
+      <% else %>
+        <h3>Задачи по данной теме:</h3>
+        </div>
+        <% @theme.tasks.each do |elem| %>
+          <div class="container">
+            <div class="row">
+              <% if user_signed_in? %>
+                <div class="col col-sm-8">
+                  <div class="list">
+                    <%= link_to elem.title, elem, class: "big_links c_normal" %>
+                  </div>
+                </div>
+                <div class="col col-sm-2 ">
+                  <%= link_to 'Изменить', edit_task_path(elem) , class: "big_links c_edit" %>
+                </div>
+                <div class="col col-sm-2 ">
+                  <%= link_to 'Удалить', elem, method: :delete, data: { confirm: 'Вы уверены?' }, class: "big_links c_destroy" %>
+                </div>
+              <%else %>
+                <div class="col col-sm-12">
+                  <div class="list">
+                    <%= link_to elem.title, elem, class: "big_links c_normal" %>
+                  </div>
+                </div>
+              <%end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+  </div>
+</div>
+
+<% if user_signed_in? %>
+  <div class="col-md-2 margin_top_20 ">
+    <%= link_to 'Добавить новую задачу', new_task_path(:id_d => @theme), class: "big_links c_new" %>
+  </div>
+<%end %>

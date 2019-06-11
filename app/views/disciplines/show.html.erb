@@ -1,10 +1,7 @@
-<p id="notice"><%= notice %></p>
-
 <h1 class="center">Дисциплина: <%= @discipline.title %></h1>
 
 <div class="container">
   <div class="row">
-
       <div class="col-12 bg-light description">
         Описание:<br>
         <p><%= @discipline.description %></p>
@@ -13,42 +10,48 @@
   </div>
 </div>
 
+  <div class="container">
+    <div class="row">
 
-<div class="container">
-  <div class="row">
-      <div class="col-12 center margin_top_20 margin_bottom_20">
-        <% if @discipline.themes.empty? %>
-          <p>Theme net</p>
-        <% else %>
-          <h3>Данная дисциплина имеет следующие темы:</h3>
-
-      </div>
-        <% @discipline.themes.each do |elem| %>
-          <div class="container">
-            <div class="row">
-              <div class="col col-sm-8">
-                <div class="list">
-                  <%= link_to elem.title, elem, class: "big_links c_normal" %>
-                </div>
-              </div>
-              <div class="col col-sm-2 ">
-                  <%= link_to 'Edit', edit_theme_path(elem), class: "big_links c_edit" %>
-              </div>
-              <div class="col col-sm-2 ">
-                <%= link_to 'Destroy', elem, method: :delete, data: { confirm: 'Are you sure?' }, class: "big_links c_destroy" %>
+        <div class="col-12 center margin_top_20 margin_bottom_20">
+          <% if @discipline.themes.empty? %>
+            <h3>Theme net</h3>
+          <% else %>
+            <h3>Данная дисциплина имеет следующие темы:</h3>
+        </div>
+          <% @discipline.themes.each do |elem| %>
+            <div class="container">
+              <div class="row">
+                <% if user_signed_in? %>
+                  <div class="col col-sm-8">
+                    <div class="list">
+                      <%= link_to elem.title, elem, class: "big_links c_normal" %>
+                    </div>
+                  </div>
+                  <div class="col col-sm-2 ">
+                      <%= link_to 'Изменить', edit_theme_path(elem), class: "big_links c_edit" %>
+                  </div>
+                  <div class="col col-sm-2 ">
+                    <%= link_to 'Удалить', elem, method: :delete, data: { confirm: 'Are you sure?' }, class: "big_links c_destroy" %>
+                  </div>
+                <%else %>
+                  <div class="col col-sm-12">
+                    <div class="list">
+                      <%= link_to elem.title, elem, class: "big_links c_normal" %>
+                    </div>
+                  </div>
+                  <%end %>
               </div>
             </div>
-          </div>
-        <% end %>
-        <% end %>
-  </div>
-</div>
+          <% end %>
 
-<div class="col-md-2 margin_top_20 ">
-  <%= link_to 'Add New Theme', new_theme_path(:id_d => @discipline), class: "big_links c_new" %>
-</div>
-<br>
-<h3>
-  <%= link_to 'Edit', edit_discipline_path(@discipline) %> |
-  <%= link_to 'Back', disciplines_path %>
-</h3>
+
+
+          <% end %>
+    </div>
+  </div>
+  <% if user_signed_in? %>
+    <div class="col-md-2 margin_top_20 ">
+      <%= link_to 'Добавить тему', new_theme_path(:id_d => @discipline), class: "big_links c_new" %>
+    </div>
+  <%end %>

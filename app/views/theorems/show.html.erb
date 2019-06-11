@@ -1,26 +1,38 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
+<h1 class="center">
   <%= @theorem.title %>
-</p>
+</h1>
 
 <% if @theorem.theme_sections.empty? %>
-  <p>Theme net</p>
+  <p>Формулу не используют</p>
 <% else %>
-  <p>Formul use in next theme:</p>
-  <ul>
-    <% @theorem.theme_sections.each do |elem| %>
-      <li><%= link_to elem.title, elem %></li>
+  <h3>Теорему используют:</h3>
+    <div class="container">
+      <div class="row">
+        <div class="col col-sm-8">
+         Тема:
+        </div>
+        <div class="col col-sm-4">
+          Дисциплина темы:
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <% @theorem.theme_sections.each do |elem| %>
+        <div class="col col-sm-8">
+            <%= link_to elem.title, elem, class: "big_links c_normal" %>
+        </div>
+        <div class="col col-sm-4">
+          <%= link_to elem.theme.title, elem.theme, class: "big_links c_normal" %>
+        </div>
     <% end %>
-  </ul>
+      </div>
+    </div>
+
 <% end %>
 
 
 <p>
-  <strong>Description:</strong>
+  <h4>Описание:</h4>
   <%=sanitize @theorem.description %>
 </p>
-
-<%= link_to 'Edit', edit_theorem_path(@theorem) %> |
-<%= link_to 'Back', theorems_path %>
